@@ -19,6 +19,9 @@ Requires: libhybris-libEGL
 Requires: libhybris-libGLESv2
 Requires: libhybris-libwayland-egl
 
+# Bluetooth
+Requires: bluebinder
+
 # Sensors
 Requires: hybris-libsensorfw-qt5
 
@@ -77,6 +80,13 @@ Requires: geoclue-provider-hybris
 # These plugins are mutually exclusive, you need to pick one:
 #Requires: nfcd-binder-plugin
 #Requires: nfcd-pn54x-plugin
+
+# For torch
+Requires: jolla-settings-system-flashlight
+
+# For suspend to work with enabled Wi-Fi on newer Qualcomm devices
+Requires: sailfish-connman-plugin-suspend
+
 
 %description -n patterns-sailfish-device-adaptation-nabu
 Pattern with packages for nabu HW Adaptation
