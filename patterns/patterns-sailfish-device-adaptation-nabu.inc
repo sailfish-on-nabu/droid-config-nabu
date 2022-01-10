@@ -23,7 +23,7 @@ Requires: libhybris-libwayland-egl
 Requires: bluebinder
 
 # Sensors
-Requires: hybris-libsensorfw-qt5
+Requires: hybris-libsensorfw-qt5-binder
 
 # Vibra
 Requires: ngfd-plugin-native-vibrator
@@ -87,6 +87,8 @@ Requires: jolla-settings-system-flashlight
 # For suspend to work with enabled Wi-Fi on newer Qualcomm devices
 Requires: sailfish-connman-plugin-suspend
 
+# For mount partitions
+Requires: parse-android-dynparts
 
 %description -n patterns-sailfish-device-adaptation-nabu
 Pattern with packages for nabu HW Adaptation
