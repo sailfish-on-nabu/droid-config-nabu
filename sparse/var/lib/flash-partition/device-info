@@ -1,7 +1,11 @@
 CPUCHECK_STRING="Qualcomm Technologies, Inc. SM6150 Interposer TRINKET"
 
 PART_1="boot"
+PART_14="dtbo"
+PART_25="vendor_boot"
 
-PART_REAL_1="mmcblk0p72"
+PART_REAL_1="sde14"
+PART_REAL_14="sde14"
+PART_REAL_25="sde25"
 
-PART_I="1" 
+PART_I="1 14 25"
