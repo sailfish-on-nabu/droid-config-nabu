@@ -7,7 +7,6 @@ Requires: droid-hal-nabu
 Requires: droid-hal-nabu-img-boot
 Requires: droid-hal-nabu-kernel-modules
 Requires: droid-hal-nabu-kernel-dtbo
-Requires: droid-hal-nabu-vendor_boot
 Requires: droid-config-nabu-sailfish
 Requires: droid-config-nabu-pulseaudio-settings
 Requires: droid-config-nabu-policy-settings
