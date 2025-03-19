@@ -37,6 +37,8 @@ Requires: geoclue-provider-mlsdb
 # to improve camera startup times and the like
 Requires: mapplauncherd-booster-silica-qt5-media
 
+Recommends: harbour-storeman
+
 %description -n patterns-sailfish-device-configuration-nabu
 Pattern with packages for nabu configurations
 
