@@ -38,6 +38,8 @@ Requires: geoclue-provider-mlsdb
 Requires: mapplauncherd-booster-silica-qt5-media
 
 Recommends: harbour-storeman
+Recommends: sailfishos-chum-gui
+Recommends: harbour-souniaoime
 
 %description -n patterns-sailfish-device-configuration-nabu
 Pattern with packages for nabu configurations
