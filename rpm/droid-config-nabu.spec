@@ -5,8 +5,11 @@
 %define vendor_pretty Xiaomi
 %define device_pretty Xiaomi Pad 5
 %define dcd_path ./
+
 # Adjust this for your device
-%define pixel_ratio 1.5
+# 2560 x 1600 WQHD+
+%define pixel_ratio 1.25
+
 # We assume most devices will
 %define have_modem 0
 %define android_version_major 11
