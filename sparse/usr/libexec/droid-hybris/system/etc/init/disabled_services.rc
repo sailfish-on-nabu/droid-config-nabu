@@ -43,3 +43,6 @@ service bpfloader /system/bin/netbpfload_HYBRIS_DISABLED
 service xiaomi-keyboard /vendor/bin/xiaomi-keyboard_HYBRIS_DISABLED
 
 service vendor.embmsslServer /vendor/bin/embmsslServer_HYBRIS_DISABLED
+
+service mi_ric_run /vendor/bin/MI_RIC_HYBRIS_DISABLED
+
