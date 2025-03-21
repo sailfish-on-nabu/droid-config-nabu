@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "droid-get-bt-address: Setting up bluetooth address"
-B=$(xxd -e -g 8 /data/vendor/mac_addr/bt.mac | grep -oiE "([a-f0-9]{12})")
+B=$(xxd -e -g 8 /data/vendor/mac_addr/wlan.mac | grep -oiE "([a-f0-9]{12})")
 echo "BT MAC: $B"
 
 if [ ! -z "$B" ] ; then
