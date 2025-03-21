@@ -1,0 +1,13 @@
+[Unit]
+Description=Wait for wifi before ui and connman
+DefaultDependencies=no
+After=systemd-modules-load.service
+Before=connman.service user@100000
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /usr/bin/droid/wait-for-wifi.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=network.target
