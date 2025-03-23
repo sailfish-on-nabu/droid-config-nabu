@@ -1,10 +1,11 @@
 #!/bin/bash
 
-mkdir /odm/etc
+mkdir -p /odm/etc
 mount --bind /odm_root/etc /odm/etc
 
 # wlan
 mount --bind /lib/modules/`uname -r`/wlan.ko /vendor/lib/modules/qca_cld3_wlan.ko
+mount --bind /usr/libexec/droid-hybris/system/lib64/hw/audio.hidl_compat.default.so /vendor/lib64/hw/audio.primary.msmnile.so
 
 # audio
 # 1. 先加载 Q6 DSP 相关核心模块（低级驱动）
