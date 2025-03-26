@@ -7,7 +7,7 @@ Requires: patterns-sailfish-device-configuration-common-nabu
 Requires: patterns-sailfish-device-adaptation-nabu
 
 # For devices with cellular modem. Those without one, please comment out:
-Requires: patterns-sailfish-cellular-apps
+#Requires: patterns-sailfish-cellular-apps
 
 # Early stages of porting benefit from these:
 Requires: patterns-sailfish-device-tools

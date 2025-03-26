@@ -54,7 +54,7 @@ Requires: gstreamer1.0-droid
 Requires: gmp-droid
 
 # This is needed for notification LEDs
-Requires: mce-plugin-libhybris
+#Requires: mce-plugin-libhybris
 
 # USB mode controller
 Requires: usb-moded
@@ -90,6 +90,12 @@ Requires: sailfish-connman-plugin-suspend
 
 # For mount partitions
 Requires: parse-android-dynparts
+
+# Splash screen
+Requires: yamuisplash
+
+# for wait keymaster
+Requires: libgbinder-tools
 
 %description -n patterns-sailfish-device-adaptation-nabu
 Pattern with packages for nabu HW Adaptation
