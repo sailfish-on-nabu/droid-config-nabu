@@ -97,6 +97,9 @@ Requires: yamuisplash
 # for wait keymaster
 Requires: libgbinder-tools
 
+# better support shell and happy
+Requires: gnu-bash
+
 %description -n patterns-sailfish-device-adaptation-nabu
 Pattern with packages for nabu HW Adaptation
 
