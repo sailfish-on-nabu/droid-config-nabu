@@ -1,0 +1,10 @@
+# Model for libdeviceinfo
+ro.product.vendor.device=nabu
+# Camera model for taken pictures
+ro.product.model=Xiaomi Pad 5
+# MTP device name
+ro.product.vendor.model=Xiaomi Pad 5
+# Manufacturer in host dmesg
+ro.product.vendor.manufacturer=Xiaomi
+# urfkill expects this
+wifi.interface=wlan0
