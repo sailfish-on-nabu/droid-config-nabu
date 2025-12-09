@@ -1,0 +1,21 @@
+# Copyright (C) 2013 Jolla Oy
+# Contact: Pekka Lundstrom  <pekka.lundstrom@jollamobile.com>
+#
+# This finds out the bootstate (USER vs ACT_DEAD) after power on
+
+[Unit]
+Description=Get initial bootstate
+DefaultDependencies=no
+After=local-fs.target systemd-tmpfiles-setup.service systemd-udev-settle.service
+Before=dsme.service
+Conflicts=shutdown.target
+ConditionPathExists=/run/systemd/boot-status
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/lib/startup/get-initial-bootstate /run/systemd/boot-status
+
+[Install]
+WantedBy=multi-user.target actdead-pre.target
+

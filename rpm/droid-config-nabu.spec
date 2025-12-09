@@ -12,7 +12,8 @@
 
 # We assume most devices will
 %define have_modem 0
-%define android_version_major 11
+
+%define native_build 1
 
 # Device-specific usb-moded configuration
 Provides: usb-moded-configs
