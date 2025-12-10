@@ -92,7 +92,7 @@ Requires: sailfish-connman-plugin-suspend
 Requires: parse-android-dynparts
 
 # Splash screen
-Requires: yamuisplash
+# Requires: yamuisplash
 
 # for wait keymaster
 Requires: libgbinder-tools
