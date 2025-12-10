@@ -6,21 +6,11 @@ Summary: Jolla Configuration nabu
 Requires: patterns-sailfish-device-configuration-common-nabu
 Requires: patterns-sailfish-device-adaptation-nabu
 
-# For devices with cellular modem. Those without one, please comment out:
-#Requires: patterns-sailfish-cellular-apps
-
 # Early stages of porting benefit from these:
 Requires: patterns-sailfish-device-tools
+Requires: libcamera-tools
 
 Requires: sailfish-content-graphics-z%{icon_res}
-
-# For multi-SIM devices
-#Requires: jolla-settings-networking-multisim
-
-# For devices which support NFC
-#Requires: jolla-settings-system-nfc
-#Requires: nfcd-dbuslog-plugin
-#Requires: nfcd-mce-plugin
 
 # Introduced starting Sailfish OS 2.0.4.x:
 # 3rd party accounts like Twitter, VK, cloud services, etc

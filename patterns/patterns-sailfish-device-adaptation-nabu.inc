@@ -3,10 +3,8 @@
 
 %package -n patterns-sailfish-device-adaptation-nabu
 Summary: Jolla HW Adaptation nabu
-Requires: droid-hal-nabu
-Requires: droid-hal-nabu-img-boot
-Requires: droid-hal-nabu-kernel-modules
-Requires: droid-hal-nabu-kernel-dtbo
+Requires: kernel-adaptation-nabu
+Requires: firmware-xiaomi-nabu
 Requires: droid-config-nabu-sailfish
 Requires: droid-config-nabu-pulseaudio-settings
 Requires: droid-config-nabu-policy-settings
@@ -15,16 +13,26 @@ Requires: droid-config-nabu-flashing
 Requires: droid-config-nabu-bluez5
 Requires: droid-hal-version-nabu
 
-# Hybris packages
-Requires: libhybris-libEGL
-Requires: libhybris-libGLESv2
-Requires: libhybris-libwayland-egl
+# Device-specific audio profiles
+Requires: alsa-ucm-conf-nabu
+
+# Needed for callaudio-trigger.sh
+Requires: alsa-utils
+
+# Needed for kernel module loading (e.g. in connman for iptables)
+Requires: kmod
+
+# Mesa packages
+Requires: mesa-dri-drivers
+Requires: mesa-libEGL
+Requires: mesa-libGLESv2
+Requires: mesa-libgbm
+Requires: mesa-libglapi
+Requires: wayland-egl
+
 
 # Bluetooth
 Requires: bluebinder
-
-# Sensors
-Requires: hybris-libsensorfw-qt5-binder
 
 # Vibra
 Requires: ngfd-plugin-native-vibrator
@@ -32,9 +40,6 @@ Requires: libngf-qt5-qtfeedback
 
 # Needed for /dev/touchscreen symlink
 Requires: qt5-plugin-generic-evdev
-
-Requires: pulseaudio-modules-droid
-Requires: pulseaudio-modules-droid-hidl
 
 # The -dummy-af is needed for newer devices that run the main
 # audiosystem-passthrough in qti mode (e.g. >=Android 9 Qualcomm),
@@ -49,12 +54,7 @@ Requires: qt5-qtwayland-wayland_egl
 Requires: qt5-qpa-hwcomposer-plugin
 Requires: qtscenegraph-adaptation
 
-# For hybris devices with droidmedia, see HADK pdf for more information
-Requires: gstreamer1.0-droid
-Requires: gmp-droid
-
-# This is needed for notification LEDs
-#Requires: mce-plugin-libhybris
+Requires: libcamera
 
 # USB mode controller
 Requires: usb-moded
@@ -64,16 +64,6 @@ Requires: rfkill
 
 # enable device lock and allow to select untrusted software
 Requires: jolla-devicelock-daemon-encsfa
-
-# Enable home encryption
-#Requires: sailfish-device-encryption
-
-# For GPS
-Requires: geoclue-provider-hybris
-
-# For FM radio on some QCOM devices
-#Requires: qt5-qtmultimedia-plugin-mediaservice-irisradio
-#Requires: jolla-mediaplayer-radio
 
 # NFC support
 # 1. binder plugin requires Android 8 or a newer base
@@ -87,9 +77,6 @@ Requires: jolla-settings-system-flashlight
 
 # For suspend to work with enabled Wi-Fi on newer Qualcomm devices
 Requires: sailfish-connman-plugin-suspend
-
-# For mount partitions
-Requires: parse-android-dynparts
 
 # Splash screen
 Requires: yamuisplash
