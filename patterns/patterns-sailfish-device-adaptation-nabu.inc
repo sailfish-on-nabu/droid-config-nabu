@@ -27,7 +27,7 @@ Requires: mesa-dri-drivers
 Requires: mesa-libEGL
 Requires: mesa-libGLESv2
 Requires: mesa-libgbm
-Requires: mesa-libglapi
+#Requires: mesa-libglapi
 Requires: wayland-egl
 
 
@@ -51,7 +51,7 @@ Requires: qt5-qtmultimedia-plugin-mediaservice-gstmediacapture
 
 # These need to be per-device due to differing backends (fbdev, eglfs, hwc, ..?)
 Requires: qt5-qtwayland-wayland_egl
-Requires: qt5-qpa-hwcomposer-plugin
+Requires: qt5-plugin-platform-eglfs
 Requires: qtscenegraph-adaptation
 
 Requires: libcamera
