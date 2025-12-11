@@ -6,7 +6,7 @@ Before=wifisetup.service
 [Service]
 Type=simple
 RemainAfterExit=yes
-ExecStartPre=/bin/touch /dev/wcnss_wlan
+ExecStartPre=/bin/sh -c "echo ON > /dev/wlan"
 ExecStart=/sbin/modprobe wlan
 ExecStop=/sbin/modprobe -r wlan
 Restart=on-failure
