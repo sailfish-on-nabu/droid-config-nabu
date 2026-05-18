@@ -9,7 +9,7 @@ Requires: droid-config-nabu-sailfish
 Requires: droid-config-nabu-pulseaudio-settings
 Requires: droid-config-nabu-policy-settings
 Requires: droid-config-nabu-preinit-plugin
-Requires: droid-config-nabu-flashing
+# Requires: droid-config-nabu-flashing
 Requires: droid-config-nabu-bluez5
 Requires: droid-hal-version-nabu
 
