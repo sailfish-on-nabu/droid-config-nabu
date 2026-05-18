@@ -32,7 +32,7 @@ Requires: wayland-egl
 
 
 # Bluetooth
-Requires: bluebinder
+Requires: bluez5-tools
 
 # Vibra
 Requires: ngfd-plugin-native-vibrator
@@ -44,7 +44,7 @@ Requires: qt5-plugin-generic-evdev
 # The -dummy-af is needed for newer devices that run the main
 # audiosystem-passthrough in qti mode (e.g. >=Android 9 Qualcomm),
 # to fix non-responding Camera app and/or voice during a phone call:
-Requires: audiosystem-passthrough-dummy-af
+# Requires: audiosystem-passthrough-dummy-af
 
 # for audio recording to work:
 Requires: qt5-qtmultimedia-plugin-mediaservice-gstmediacapture
@@ -81,8 +81,6 @@ Requires: sailfish-connman-plugin-suspend
 # Splash screen
 Requires: yamuisplash
 
-# for wait keymaster
-Requires: libgbinder-tools
 
 # better support shell and happy
 Requires: gnu-bash
