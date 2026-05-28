@@ -8,3 +8,8 @@ mount --bind /lib/modules/`uname -r`/wlan.ko /vendor/lib/modules/qca_cld3_wlan.k
 
 # bt
 mount --bind /usr/libexec/droid-hybris/system/bluebinder_wait.sh /usr/bin/droid/bluebinder_wait.sh
+
+# waydroid binderfs
+cd /dev/
+ln -s binderfs/*puddle* .
+chmod 666 binderfs/*puddle*
