@@ -10,7 +10,7 @@ Requires: patterns-sailfish-device-adaptation-nabu
 #Requires: patterns-sailfish-cellular-apps
 
 # Early stages of porting benefit from these:
-Requires: patterns-sailfish-device-tools
+# Requires: patterns-sailfish-device-tools
 
 Requires: sailfish-content-graphics-z%{icon_res}
 
