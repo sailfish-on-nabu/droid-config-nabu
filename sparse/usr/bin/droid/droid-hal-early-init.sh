@@ -3,6 +3,9 @@
 mkdir -p /odm/etc
 mount --bind /odm_root/etc /odm/etc
 
+# for usb suspend
+echo none > /sys/devices/platform/soc/a600000.ssusb/mode
+
 # wlan
 mount --bind /lib/modules/`uname -r`/wlan.ko /vendor/lib/modules/qca_cld3_wlan.ko
 
