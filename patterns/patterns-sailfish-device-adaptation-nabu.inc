@@ -27,7 +27,7 @@ Requires: bluebinder
 Requires: hybris-libsensorfw-qt5-binder
 
 # Vibra
-Requires: ngfd-plugin-native-vibrator
+Requires: ngfd-plugin-droid-vibrator
 Requires: libngf-qt5-qtfeedback
 
 # Needed for /dev/touchscreen symlink
