@@ -1,0 +1,17 @@
+[Unit]
+Description=Xiaomi Pad 5 Keyboard MCU Helper
+After=multi-user.target
+Wants=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/bin/sh /usr/bin/droid/xiaomi-kb-helper.sh
+Restart=on-failure
+RestartSec=5
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=xiaomi-kb
+
+[Install]
+WantedBy=multi-user.target
+
