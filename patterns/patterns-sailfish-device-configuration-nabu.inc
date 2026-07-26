@@ -10,7 +10,7 @@ Requires: patterns-sailfish-device-adaptation-nabu
 #Requires: patterns-sailfish-cellular-apps
 
 # Early stages of porting benefit from these:
-Requires: patterns-sailfish-device-tools
+# Requires: patterns-sailfish-device-tools
 
 Requires: sailfish-content-graphics-z%{icon_res}
 
@@ -36,10 +36,6 @@ Requires: geoclue-provider-mlsdb
 # Devices with 2G or more memory should also include this booster
 # to improve camera startup times and the like
 Requires: mapplauncherd-booster-silica-qt5-media
-
-Recommends: harbour-storeman
-Recommends: sailfishos-chum-gui
-Recommends: harbour-souniaoime
 
 %description -n patterns-sailfish-device-configuration-nabu
 Pattern with packages for nabu configurations
