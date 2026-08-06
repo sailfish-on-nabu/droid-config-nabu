@@ -1,0 +1,20 @@
+[Unit]
+Description=Droid mount for /metadata
+Before=local-fs.target systemd-modules-load.service
+
+[Mount]
+What=/dev/sda19
+Where=/metadata
+Type=ext4
+Options=noatime,nosuid,nodev,discard
+# Options had SELinux context option:  
+
+# Default is 90 which makes mount period too long in case of
+# errors so drop it down a notch.
+TimeoutSec=10
+
+[Install]
+WantedBy=local-fs.target
+
+# From ./out/target/product/nabu/vendor/etc/fstab.qcom :
+# /dev/block/by-name/metadata                             /metadata              ext4    noatime,nosuid,nodev,discard                         wait,check,formattable,first_stage_mount
