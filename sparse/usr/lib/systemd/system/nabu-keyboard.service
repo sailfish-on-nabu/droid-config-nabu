@@ -1,0 +1,17 @@
+[Unit]
+Description=Enable nabu keyboard and touchpad after Lipstick is ready
+Wants=nabu-keyboard-early.service
+After=nabu-keyboard-early.service display.service user@100000.service
+PartOf=display.service
+ConditionPathExists=/sys/bus/platform/devices/a800000.ssusb/mode
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /usr/bin/droid/nabu-keyboard-control late-on
+ExecStop=/usr/bin/python3 /usr/bin/droid/nabu-keyboard-control off
+RemainAfterExit=yes
+TimeoutStartSec=180s
+TimeoutStopSec=8s
+
+[Install]
+WantedBy=display.service

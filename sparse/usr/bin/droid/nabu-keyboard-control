@@ -1,0 +1,93 @@
+#!/usr/bin/python3
+"""Gate the nabu keyboard USB host until the user compositor is ready."""
+
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+import time
+
+
+CONTROLLER = Path('/sys/bus/platform/devices/a800000.ssusb')
+CORE = CONTROLLER / 'a800000.dwc3'
+MODE = CONTROLLER / 'mode'
+STATE = Path('/run/nabu-keyboard-delay')
+USER_RUNTIME = '/run/user/100000'
+USER_BUS = 'unix:path=' + USER_RUNTIME + '/dbus/user_bus_socket'
+
+
+def host_present():
+    return CORE.exists() and any(path.name.startswith('xhci-hcd.') for path in CORE.iterdir())
+
+
+def change_mode(value):
+    MODE.write_text(value + '\n')
+    deadline = time.monotonic() + 5
+    while time.monotonic() < deadline:
+        if MODE.read_text().strip() == value and host_present() == (value == 'host'):
+            return
+        time.sleep(0.05)
+    raise RuntimeError('USB host did not reach mode ' + value + ' within 5 seconds')
+
+
+def lipstick_state():
+    argv = [
+        '/usr/sbin/runuser', '-u', 'defaultuser', '--', '/usr/bin/env',
+        'XDG_RUNTIME_DIR=' + USER_RUNTIME,
+        'DBUS_SESSION_BUS_ADDRESS=' + USER_BUS,
+        '/usr/bin/systemctl', '--user', 'show', 'lipstick.service',
+        '-p', 'ActiveState', '-p', 'SubState', '-p', 'ActiveEnterTimestampMonotonic',
+    ]
+    try:
+        result = subprocess.run(argv, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL,
+                                universal_newlines=True, timeout=3)
+    except subprocess.TimeoutExpired:
+        return {}
+    if result.returncode:
+        return {}
+    return dict(line.split('=', 1) for line in result.stdout.splitlines() if '=' in line)
+
+
+def wait_for_lipstick():
+    deadline = time.monotonic() + 150
+    while time.monotonic() < deadline:
+        state = lipstick_state()
+        if state.get('ActiveState') == 'active' and state.get('SubState') == 'running':
+            return state
+        time.sleep(1)
+    raise RuntimeError('lipstick.service did not become ready within 150 seconds')
+
+
+def record(filename, state):
+    STATE.mkdir(mode=0o755, parents=True, exist_ok=True)
+    state['boot_id'] = Path('/proc/sys/kernel/random/boot_id').read_text().strip()
+    state['monotonic_usec'] = int(time.monotonic() * 1000000)
+    (STATE / filename).write_text(json.dumps(state, indent=2) + '\n')
+    print(json.dumps(state), flush=True)
+
+
+def main():
+    if os.geteuid() != 0:
+        raise RuntimeError('This helper must run as root')
+    if len(sys.argv) != 2 or sys.argv[1] not in ('off', 'on', 'late-on'):
+        raise RuntimeError('Usage: nabu-keyboard-control off|on|late-on')
+    action = sys.argv[1]
+    if action == 'off':
+        change_mode('none')
+        record('early.json', {'action': 'off', 'mode': 'none', 'host_present': host_present()})
+    else:
+        ready = wait_for_lipstick() if action == 'late-on' else {}
+        before = int(time.monotonic() * 1000000)
+        change_mode('host')
+        record('late.json' if action == 'late-on' else 'manual.json',
+               {'action': action, 'mode': 'host', 'host_present': host_present(),
+                             'enable_requested_usec': before, 'lipstick': ready})
+
+
+if __name__ == '__main__':
+    try:
+        main()
+    except Exception as error:
+        print('nabu-keyboard-control: ' + str(error), file=sys.stderr, flush=True)
+        sys.exit(1)

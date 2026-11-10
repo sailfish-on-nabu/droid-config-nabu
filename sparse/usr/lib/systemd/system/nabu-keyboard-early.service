@@ -1,0 +1,16 @@
+[Unit]
+Description=Disable nabu keyboard USB host before device coldplug
+DefaultDependencies=no
+Before=systemd-udevd-kernel.socket systemd-udevd-control.socket systemd-udevd.service systemd-udev-trigger.service systemd-udev-settle.service sysinit.target shutdown.target
+Conflicts=shutdown.target
+ConditionPathExists=/sys/bus/platform/devices/a800000.ssusb/mode
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /usr/bin/droid/nabu-keyboard-control off
+RemainAfterExit=yes
+TimeoutStartSec=8s
+TimeoutStopSec=3s
+
+[Install]
+WantedBy=sysinit.target

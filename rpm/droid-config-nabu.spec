@@ -14,6 +14,10 @@
 %define have_modem 0
 %define android_version_major 11
 
+# Runtime dependencies for the delayed keyboard USB host helper
+Requires: python3-base
+Requires: util-linux
+
 # Device-specific usb-moded configuration
 Provides: usb-moded-configs
 
